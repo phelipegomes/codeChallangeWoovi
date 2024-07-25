@@ -8,8 +8,8 @@ export default function FirstBox() {
                     <div className="margin-spacer"><span className="pix-tag">Pix</span>
                     </div>
                         <div className="price-box">
-                            <p><em>1x</em> R$ 30.500,00</p>
-                            <p style={{color: '#3adba9', fontSize: 10 }}>Ganhe 3% de Cashback</p>
+                            <p style={{marginBottom: 1 }}><b>1x</b> R$ 30.500,00</p>
+                            <p style={{color: '#3adba9', fontSize: 8 }}>Ganhe 3% de Cashback</p>
                     <p className="cash-back-tag"></p>
                     <div className="flag">
                     @ <em>R$ 300,00</em> de volta no seu Pix na hora
