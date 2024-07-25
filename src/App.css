@@ -44,9 +44,7 @@
   right: 10px;
 }
 
-.avista-box, .parcelado-box {
-  flex-grow: 1;
-}
+
 .color {
   color: greenyellow;
 }
