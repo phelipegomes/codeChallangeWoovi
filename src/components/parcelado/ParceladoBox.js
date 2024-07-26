@@ -1,7 +1,21 @@
 import valuesObject from './prices';
 import "./parcelado.css"
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function OtherBox() {
+    const [selectedValue, setSelectedValue] = useState(null);
+    const navigate = useNavigate();
+
+    const handleSelection = (value) => {
+        setSelectedValue(value)
+    };
+
+    const handleSubmit = () => {
+        if(selectedValue) {
+            navigate("/pay", { state: {selectedValue}});
+        }
+    };
 
     const valuesToMap = valuesObject.slice(1);
     const listBoxes = valuesToMap.map(value => {
@@ -32,7 +46,13 @@ export default function OtherBox() {
                             {value.cashback && cashback}
                         </div>
                     </div>
-                    <input type="radio" id={inputId} name="payment-option" value="parcelado" />
+                    <input 
+                        type="radio" 
+                        id={inputId} 
+                        name="payment-option" 
+                        value="parcelado" 
+                        onChange={() => handleSelection(value.currentValue)}
+                    />
                 </div>
             </label>
         );
@@ -41,6 +61,7 @@ export default function OtherBox() {
     return (
         <>
             {listBoxes}
+            <button onClick={handleSubmit}>Pagar</button>
         </>
     );
 };

@@ -2,6 +2,8 @@ import "./avista.css"
 
 export default function FirstBox() {
     return (
+        <>
+        <h1 style={{textAlign: "center"}}>Olá João, como você quer pagar?</h1>
         <label htmlFor="first-box-radio" className="radio-label">
             <div className="radio-container">
                 <div className="avista-box">
@@ -21,6 +23,6 @@ export default function FirstBox() {
         
       </label>
 
-       
+      </>
     );
 };
