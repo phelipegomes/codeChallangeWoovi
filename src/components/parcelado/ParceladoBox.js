@@ -13,6 +13,7 @@ export default function OtherBox() {
         setSelectedValue(value)
         setSelectedInstallment(installment)
         setSelectedValueTotal(total)
+
     };
 
     const handleSubmit = () => {
@@ -65,7 +66,10 @@ export default function OtherBox() {
     return (
         <>
             {listBoxes}
-            <button onClick={handleSubmit}>Pagar</button>
+            <div className="pay-div">
+            <button className="pay-button" onClick={handleSubmit}>Pagar</button>
+            </div>
+            
         </>
     );
 };

@@ -27,7 +27,7 @@ export default function ResultPage() {
         currency: 'BRL'
     });
 
-    const totalValue = selectedValue * 2;
+    const totalValue = selectedValue * selectedInstallment * 1.1;
     const formattedTotalValue = totalValue.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
@@ -48,7 +48,7 @@ export default function ResultPage() {
 
     
     return (
-        <div>
+        <div style={{maxWidth: 500, display: "block", margin: "auto"}}>
             <h1 style={{textAlign: "center"}}> João, pague a entrada de<br/> {formattedValue} pelo Pix</h1>
             <div className='qrcode-box'>
                 <img style={{width: 400}}  alt="Código QR" src="http://product.corel.com/help/Common/CDGS/540223850/Shared/CorelDRAW-QR-code.png"/>
@@ -57,15 +57,27 @@ export default function ResultPage() {
                 <button className="qrcode-button" onClick={handleCopy}>Clique para copiar o QR CODE </button>
             </div>
             <p style={{textAlign: "center"}}>Prazo de pagamento:<br/> {formattedDate}</p>
-        <div>
+            <div>
             <span className="span-left">1ª entrada no pix</span><span className="span-right">{formattedValue}</span>
             <span className="span-left">{selectedInstallment - 1}x no cartão</span><span className="span-right">{formattedValue}</span>
             <hr/>
-            <span className="span-left">CET: 0,5%</span><span className="span-right">Total:{formattedTotalValue}</span>
+            <span className="span-left">CET: 0,5%</span><span className="span-right">Total: {formattedTotalValue}</span>
             <hr/>
             <span>Comom funciona?</span>
             <hr/>
-        </div>
+            <div style={{textAlign: "center", paddingTop: 20}}>
+            <p style={{margin: 0}}>Identificador:</p>
+            <p style={{margin: 0}}>135bl1kjhcl1kjn3k4bkbc</p>
+            </div>
+
+            <div style={{textAlign: "center", paddingTop: 20}}>
+            <p style={{margin: 0, paddingBottom: 50}}>Pagamento 100% seguro com: Woovi</p>
+            
+            </div>
+            </div>
+            <div className="qrcode-div">
+                <button className="qrcode-button">Continuar para Cartão</button>
+            </div>
         </div>
     );
 }
