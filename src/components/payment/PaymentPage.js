@@ -16,8 +16,19 @@ export default function ResultPage() {
     };
 
     const location = useLocation();
-    const { selectedValue } = location.state || { selectedValue: 0 };
+    const {
+        selectedValue = 0,
+        selectedInstallment = 0,
+        selectedValueTotal = 0
+    } = location.state || {};
+    
     const formattedValue = selectedValue.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+    });
+
+    const totalValue = selectedValue * 2;
+    const formattedTotalValue = totalValue.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
     });
@@ -26,6 +37,8 @@ export default function ResultPage() {
     
     const nextDayDate = new Date(currentDate);
     nextDayDate.setDate(currentDate.getDate() + 1);
+
+
     
     const formattedDate = nextDayDate.toLocaleDateString('pt-BR', {
         year: 'numeric',
@@ -33,6 +46,7 @@ export default function ResultPage() {
         day: 'numeric'
     });
 
+    
     return (
         <div>
             <h1 style={{textAlign: "center"}}> João, pague a entrada de<br/> {formattedValue} pelo Pix</h1>
@@ -43,8 +57,15 @@ export default function ResultPage() {
                 <button className="qrcode-button" onClick={handleCopy}>Clique para copiar o QR CODE </button>
             </div>
             <p style={{textAlign: "center"}}>Prazo de pagamento:<br/> {formattedDate}</p>
-            <p>{formattedValue}</p>
-
+        <div>
+            <span className="span-left">1ª entrada no pix</span><span className="span-right">{formattedValue}</span>
+            <span className="span-left">{selectedInstallment - 1}x no cartão</span><span className="span-right">{formattedValue}</span>
+            <hr/>
+            <span className="span-left">CET: 0,5%</span><span className="span-right">Total:{formattedTotalValue}</span>
+            <hr/>
+            <span>Comom funciona?</span>
+            <hr/>
+        </div>
         </div>
     );
 }

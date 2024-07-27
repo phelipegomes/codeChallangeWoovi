@@ -5,15 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 export default function OtherBox() {
     const [selectedValue, setSelectedValue] = useState(null);
+    const [selectedInstallment, setSelectedInstallment] = useState(null);
+    const [selectedValueTotal, setSelectedValueTotal] = useState(null);
     const navigate = useNavigate();
 
-    const handleSelection = (value) => {
+    const handleSelection = (value, installment, total) => {
         setSelectedValue(value)
+        setSelectedInstallment(installment)
+        setSelectedValueTotal(total)
     };
 
     const handleSubmit = () => {
-        if(selectedValue) {
-            navigate("/pay", { state: {selectedValue}});
+        if(selectedValue && selectedInstallment && selectedValueTotal) {
+            navigate("/pay", { state: {selectedValue, selectedInstallment, selectedValueTotal }});
         }
     };
 
@@ -51,7 +55,7 @@ export default function OtherBox() {
                         id={inputId} 
                         name="payment-option" 
                         value="parcelado" 
-                        onChange={() => handleSelection(value.currentValue)}
+                        onChange={() => handleSelection(value.currentValue, value.id, value.totalValue)}
                     />
                 </div>
             </label>

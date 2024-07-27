@@ -25,3 +25,15 @@
     border: 0 solid ;
     color: white;
 }
+
+.span-left {
+    display: inline-block;
+    width: 49%;
+    text-align: left;
+}
+
+.span-right {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+}
