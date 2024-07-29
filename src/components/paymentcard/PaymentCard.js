@@ -1,21 +1,9 @@
-import "./payment.css"
+import "./paymentcard.css"
 import { useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import CardForm from "../cardform/CardForm";
 
 export default function ResultPage() {
-    const [textToCopy, setTextToCopy] = useState('https://www.gerarpix.com.br/pix?code=TN2HPgOL_7fn_qeJxr_N3W-2q-7ylnAb5kRBtRgP7d7gOLXnQVuFaEHJmKhPMrt2luqvpTxp9zvjrWcUdHxDah3Oue2pOia3EnFT1ZMc2eNV4cd8Hfk500SHD2gq-5f4FnfT63G9ydeY98N2m3_2JLH7tzykzYDZWCdnRASr126wf72_h6KZW6a8vpCgofKe6ifBpSovi5IM3Tz3TRGcTcwMOYuhZVJg');
-
-    const navigate = useNavigate();
-    const handleCopy = () => {
-        navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                alert('Código QR Copiado!');
-            })
-            .catch(err => {
-                console.error('Erro ao copiar texto: ', err);
-            });
-    };
 
     const location = useLocation();
     const {
@@ -24,12 +12,6 @@ export default function ResultPage() {
         selectedValueTotal = 0
     } = location.state || {};
 
-    const handleClick = () => {
-        if(selectedValue && selectedInstallment && selectedValueTotal) {
-            navigate("/paycard", { state: {selectedValue, selectedInstallment, selectedValueTotal }});
-        }
-    };
-    
     const formattedValue = selectedValue.toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'
@@ -54,16 +36,13 @@ export default function ResultPage() {
         day: 'numeric'
     });
 
+
     
     return (
         <div style={{maxWidth: 500, display: "block", margin: "auto"}}>
-            <h1 style={{textAlign: "center"}}> João, pague a entrada de<br/> {formattedValue} pelo Pix</h1>
-            <div className='qrcode-box'>
-                <img style={{width: 250}}  alt="Código QR" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg/420px-Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg.png"/>
-            </div>
-            <div className="qrcode-div">
-                <button className="qrcode-button" onClick={handleCopy}>Clique para copiar o QR CODE </button>
-            </div>
+            <h1 style={{textAlign: "center"}}> João, pague o restante em {selectedInstallment}x de <br/> {formattedValue} no cartão</h1>
+            <CardForm/>
+
             <p style={{textAlign: "center"}}>Prazo de pagamento:<br/> {formattedDate}</p>
             <div>
             <span className="span-left">1ª entrada no pix</span><span className="span-right">{formattedValue}</span>
@@ -82,9 +61,6 @@ export default function ResultPage() {
             <p style={{margin: 0, paddingBottom: 50}}>Pagamento 100% seguro com: Woovi</p>
             
             </div>
-            </div>
-            <div className="qrcode-div">
-                <button className="qrcode-button" onClick={handleClick} >Continuar para Cartão</button>
             </div>
         </div>
     );
