@@ -26,7 +26,6 @@ export default function CardForm() {
     
       return (
         <div className="App">
-          <h1>Payment Form</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label>
