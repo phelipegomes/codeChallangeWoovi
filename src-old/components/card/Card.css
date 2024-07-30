@@ -9,23 +9,6 @@
     margin-bottom: 10px;
 }
 
-.qrcode-div {
-    width: 230px;
-    height: 30px;
-    background-color: #143a6f;
-    border-radius: 10px;
-    color: white;
-    display: block;
-    margin: auto;
-    text-align: center;
-}
-
-.qrcode-button {
-    background-color: #143a6f;
-    border: 0 solid ;
-    color: white;
-}
-
 .span-left {
     display: inline-block;
     width: 49%;

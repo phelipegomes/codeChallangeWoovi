@@ -1,12 +1,10 @@
-import "./Payment.css"
+import "./payment.css"
 import { useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function ResultPage() {
-    const [textToCopy, setTextToCopy] = useState('woovi5IM3Tz3TRGcTcwMOYuhZVJg');
+    const [textToCopy, setTextToCopy] = useState('https://www.gerarpix.com.br/pix?code=TN2HPgOL_7fn_qeJxr_N3W-2q-7ylnAb5kRBtRgP7d7gOLXnQVuFaEHJmKhPMrt2luqvpTxp9zvjrWcUdHxDah3Oue2pOia3EnFT1ZMc2eNV4cd8Hfk500SHD2gq-5f4FnfT63G9ydeY98N2m3_2JLH7tzykzYDZWCdnRASr126wf72_h6KZW6a8vpCgofKe6ifBpSovi5IM3Tz3TRGcTcwMOYuhZVJg');
 
-    const navigate = useNavigate();
     const handleCopy = () => {
         navigator.clipboard.writeText(textToCopy)
             .then(() => {
@@ -23,12 +21,6 @@ export default function ResultPage() {
         selectedInstallment = 0,
         selectedValueTotal = 0
     } = location.state || {};
-
-    const handleClick = () => {
-        if(selectedValue && selectedInstallment && selectedValueTotal) {
-            navigate("/paycard", { state: {selectedValue, selectedInstallment, selectedValueTotal }});
-        }
-    };
     
     const formattedValue = selectedValue.toLocaleString('pt-BR', {
         style: 'currency',
@@ -59,7 +51,7 @@ export default function ResultPage() {
         <div style={{maxWidth: 500, display: "block", margin: "auto"}}>
             <h1 style={{textAlign: "center"}}> João, pague a entrada de<br/> {formattedValue} pelo Pix</h1>
             <div className='qrcode-box'>
-                <img style={{width: 250}}  alt="Código QR" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg/420px-Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg.png"/>
+                <img style={{width: 300}}  alt="Código QR" src="http://product.corel.com/help/Common/CDGS/540223850/Shared/CorelDRAW-QR-code.png"/>
             </div>
             <div className="qrcode-div">
                 <button className="qrcode-button" onClick={handleCopy}>Clique para copiar o QR CODE </button>
@@ -72,20 +64,20 @@ export default function ResultPage() {
             <span className="span-left">CET: 0,5%</span><span className="span-right">Total: {formattedTotalValue}</span>
             <hr/>
             <span>Comom funciona?</span>
-            <div className="qrcode-div" style={{marginTop: 50}}>
-                <button className="qrcode-button" onClick={handleClick} >Continuar para Cartão</button>
-            </div>
+            <hr/>
             <div style={{textAlign: "center", paddingTop: 20}}>
             <p style={{margin: 0}}>Identificador:</p>
             <p style={{margin: 0}}>135bl1kjhcl1kjn3k4bkbc</p>
             </div>
-            
+
             <div style={{textAlign: "center", paddingTop: 20}}>
             <p style={{margin: 0, paddingBottom: 50}}>Pagamento 100% seguro com: Woovi</p>
             
             </div>
             </div>
-            
+            <div className="qrcode-div" style={{marginBottom: 50}}>
+                <button className="qrcode-button">Continuar para Cartão</button>
+            </div>
         </div>
     );
 }

@@ -1,73 +1,39 @@
-.main {
-  width: 90%;
-  display: block;
-  margin: auto;
+.qrcode-box {
+    border: 2px solid #3bdcac;
+    border-radius: 15px;
+    padding: 5px;
+    width: 300px;
+    display: block;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-.radio-label {
-  justify-content: space-between;
-  border: 1.5px solid #e5e4e4;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 30px;
-  display: block;
-  position: relative;
+.qrcode-div {
+    width: 230px;
+    height: 30px;
+    background-color: #143a6f;
+    border-radius: 10px;
+    color: white;
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
-.radio-container {
-  position: relative;
-  display: flex;
+.qrcode-button {
+    background-color: #143a6f;
+    border: 0 solid ;
+    color: white;
 }
 
-.avista-box {
-  flex-grow: 1;
+.span-left {
+    display: inline-block;
+    width: 49%;
+    text-align: left;
 }
 
-.margin-spacer {
-  margin-top: -20px;
-}
-
-.pix-tag {
-  background-color: #e5e4e4;
-  border: 0 solid bwhitesmoke;
-  border-radius: 100px;
-  padding: 0 10px;
-}
-
-.flag {
-  background-color: #133a6f;
-  color: white;
-  border-radius: 5px;
-  padding: 5px 10px;
-  width: 100%;
-}
-
-.parcelado-box {
-  flex-grow: 1;
-}
-
-.radio-input {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.color {
-  color: greenyellow;
-}
-
-.pay-button {
-  background-color: #143a6f;
-  border: 0 solid ;
-  color: white;
-}
-.pay-div {
-  width: 100px;
-  height: 30px;
-  background-color: #143a6f;
-  border-radius: 10px;
-  color: white;
-  display: block;
-  margin: auto;
-  text-align: center;
+.span-right {
+    display: inline-block;
+    width: 49%;
+    text-align: right;
 }
